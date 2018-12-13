@@ -1,13 +1,13 @@
-%Prueba de uso de la funci髇 simulaImagen256 con k-wave
-%Las im醙enes deben ser archivos bmp de 256 colores
-%Dimensiones convenientes para eficiencia de c醠culo son 128, 256, 512
-%Referencia "Ense馻nza de Ac鷖tica F韘ica con Simulaciones en k-wave"
-%enviado para publicaci髇 a revista Elektor
+%Prueba de uso de la funci贸n simulaImagen256 con k-wave
+%Las im谩genes deben ser archivos bmp de 256 colores
+%Dimensiones convenientes para eficiencia de c谩lculo son 128, 256, 512
+%Referencia "Ense帽anza de Ac煤stica F铆sica con Simulaciones en k-wave"
+%enviado para publicaci贸n a revista Elektron
 % Jorge Petrosino, Lucas Landini, Georgina Lizaso, Ian Kuri, Ianina Canalis
 %
 nombreArchivoImagen='TuboInfinitoAbierto.bmp';
-escala=1e-3; % m韓imo dx grilla en metros
-duracion=1.2e-3; % duraci髇 de la simulaci髇 en segundos
+escala=1e-3; % m铆nimo dx grilla en metros
+duracion=1.2e-3; % duraci贸n de la simulaci贸n en segundos
 registraVideo=false;
 c0=344; % velocidad del sonido
 fuente.tipo='nCiclos';
@@ -16,13 +16,13 @@ fuente.modo='additive';
 [datos_sensor, t, dt, ecuacion, lx, ly] = simulaImagen256(nombreArchivoImagen, escala, duracion, registraVideo,c0,fuente);
 
 
-%Gr醘icos de resultados
+%Gr谩ficos de resultados
 subplot(2,1,1)
 plot(t,ecuacion);
-title('fuentes'); xlabel('t [s]'); ylabel('presi髇 [Pa]')
+title('fuentes'); xlabel('t [s]'); ylabel('presi贸n [Pa]')
 subplot(2,1,2)
 plot(t,datos_sensor);
-title('registros'); xlabel('t [s]'); ylabel('presi髇 [Pa]')
+title('registros'); xlabel('t [s]'); ylabel('presi贸n [Pa]')
 %legend('cerca sin barrera','cerca tras barrera', 'lejos sin barrera','lejos tras barrera')
 legend('1','2','Location','SouthWest')
 axis([-inf inf -0.5 0.5])
