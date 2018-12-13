@@ -1,22 +1,30 @@
 function [ datos_sensor, t, dt, ecuacion, lx, ly] = simulaImagen256(nombreArchivoImagen, escala, duracion, registraVideo, c0,fuente)
 %[datos_sensor, t, dt, fuente, lx, ly] = simulaImagen256(nombreArchivoImagen, escala, duracion, registraVideo,c0,fuente)
 %Ver ejemplos de uso en https://github.com/GLizaso/Adaptacion_k-wave_para_ensenanza
-%Referencia "Enseñanza de Acústica Física con Simulaciones en k-wave"
-%enviado para publicación a revista Elektron
+%Referencia "EnseÃ±anza de AcÃºstica FÃ­sica con Simulaciones en k-wave"
+%enviado para publicaciÃ³n a revista Elektron
 % Jorge Petrosino, Lucas Landini, Georgina Lizaso, Ian Kuri, Ianina Canalis
 %
-% Uso de "fuente": Es una estructura que admite 4 formatos
+% Uso de "fuente": Es una estructura que admite 4 formatos /(fuente is "source" in spanish)
 % 1) 'impulso' (impulse)
 %       fuente.tipo='impulso'; fuente.amplitud=8;
 % 2) 'nCiclos' (n cycles of a sinusoidal)
 %       fuente.tipo='nCiclos'; fuente.amplitud=2; 
 %       fuente.f0=1000; %[Hz]
-%       fuente.n=3; % número de ciclos (number of cycles) 
-% 3) 'ruidoBlanco' ruido blanco/white noise 
+%       fuente.n=3; % nÃºmero de ciclos (number of cycles) 
+% 3) 'ruidoBlanco' (white noise)
 %       fuente.tipo='ruidoBlanco'; fuente.amplitud=2; 
-%       fuente.duracion=2e-3; % duración del ruido/time length of noise [s]
-% 4) expresión libre / free form
-%       fuente.tipo='4*sin(2*pi*1000*t+pi/4)';
+%       fuente.duracion=2e-3; % duraciÃ³n del ruido/time length of noise [s]
+% 4) expresiÃ³n libre / free form
+%       fuente.tipo='4*sin(2*pi*1000*t+pi/4)'; % any expression in MATLAB/Octave
+%
+% Forma de definir fuentes, sensores y paredes reflectantes (Definition of sources, sensors and refleting walls)
+% Las imÃ¡genes deben tener formato bmp de 256 colores / Images must be in bmp 256 color format
+% Los puntos de color rojo son fuentes / Red points are sources
+% Los puntos de color verde son sensores / Green points are sensors
+% Los puntos de color negro son elementos reflectantes / Black points are reflecting elements
+% El resto de colores son ignorados por el simulador / Other colors are ignored in the simulation
+% Rojo/Red = 79; Verde/Green = 113; Negro/Black = 0; % Standard color codes in Paint Image Editor
 
 
 densidad=1.24;
@@ -54,7 +62,7 @@ switch tipoFuente
     otherwise
         eval(['ecuacion =' tipoFuente ';']);
 end
-ecuacion=ecuacion(1:length(t)); % Por uso de round(), podría no coincidir con k-wave original
+ecuacion=ecuacion(1:length(t)); % Por uso de round(), podrÃ­a no coincidir con k-wave original
 source.p=ecuacion;
 
 %paredes (NEGRO=0)
