@@ -5,7 +5,7 @@ function [ datos_sensor, t, dt, ecuacion, lx, ly] = simulaImagen256(nombreArchiv
 %enviado para publicación a revista Elektron
 % Jorge Petrosino, Lucas Landini, Georgina Lizaso, Ian Kuri, Ianina Canalis
 %
-% Uso de "fuente": Es una estructura que admite 4 formatos /(fuente is "source" in spanish)
+% Uso de "fuente": Es una estructura que admite 4 formatos /("fuente" means "source" in spanish)
 % 1) 'impulso' (impulse)
 %       fuente.tipo='impulso'; fuente.amplitud=8; fuente.modo='additive';
 % 2) 'nCiclos' (n cycles of a sinusoidal)
