@@ -7,16 +7,16 @@ function [ datos_sensor, t, dt, ecuacion, lx, ly] = simulaImagen256(nombreArchiv
 %
 % Uso de "fuente": Es una estructura que admite 4 formatos /(fuente is "source" in spanish)
 % 1) 'impulso' (impulse)
-%       fuente.tipo='impulso'; fuente.amplitud=8;
+%       fuente.tipo='impulso'; fuente.amplitud=8; fuente.modo='additive';
 % 2) 'nCiclos' (n cycles of a sinusoidal)
-%       fuente.tipo='nCiclos'; fuente.amplitud=2; 
+%       fuente.tipo='nCiclos'; fuente.amplitud=2; fuente.modo='additive';
 %       fuente.f0=1000; %[Hz]
 %       fuente.n=3; % número de ciclos (number of cycles) 
 % 3) 'ruidoBlanco' (white noise)
-%       fuente.tipo='ruidoBlanco'; fuente.amplitud=2; 
+%       fuente.tipo='ruidoBlanco'; fuente.amplitud=2; fuente.modo='additive';
 %       fuente.duracion=2e-3; % duración del ruido/time length of noise [s]
-% 4) expresión libre / free form
-%       fuente.tipo='4*sin(2*pi*1000*t+pi/4)'; % any expression in MATLAB/Octave
+% 4) expresión libre / free form - any expression in MATLAB/Octave
+%       fuente.tipo='4*sin(2*pi*1000*t+pi/4)'; fuente.modo='additive'; 
 %
 % Forma de definir fuentes, sensores y paredes reflectantes (Definition of sources, sensors and refleting walls)
 % Las imágenes deben tener formato bmp de 256 colores / Images must be in bmp 256 color format
